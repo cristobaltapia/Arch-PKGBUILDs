@@ -29,6 +29,5 @@ package() {
 
   cd $srcdir/code
   #cd $srcdir/eqc-1.4.11
-
   make DESTDIR="$pkgdir" install
 }
