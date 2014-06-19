@@ -1,0 +1,27 @@
+pkgname=bricscad
+pkgver=14.1.17
+pkgrel=1
+pkgdesc="BricsCAD is the powerful CAD software platform unifying the familiar feature set of native dwg with advanced 2D tools and intelligent 3D direct modeling on Windows and Linux, and this at a compelling price. "
+url="http://www.bricsys.org"
+depends=('lib32-gtk-engine-murrine' 'deb2targz' 'lib32-libcanberra' 'lib32-gnome-keyring')
+arch=('x86_64')
+provides=('bricscad')
+license=('BricSys')
+
+_file='BricsCAD-V'${pkgver}'-'${pkgrel}'-en_US-amd64'
+source=(${_file}.deb)
+md5sums=('77dac5d9a1541d20448e6f8aa395ef40')
+
+package() {
+
+    deb2targz ${_file}.deb
+    cd ${srcdir}
+    tar zxvf ${_file}.tar.gz
+
+    cp -R opt ${pkgdir}
+    cp -R usr ${pkgdir}
+
+    #ln -s /usr/lib32/libgnutls.so.28 ${pkgdir}/opt/bricsys/bricscad/v13/libgnutls.so.26
+
+}
+

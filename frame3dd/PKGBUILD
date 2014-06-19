@@ -1,0 +1,36 @@
+# Maintainer: Ricardo Leuck <leuck dot r at gmail dot com>
+pkgname=frame3dd
+pkgver=20130418
+pkgrel=1
+pkgdesc="Free open-source software for static and dynamic structural analysis of 2D and 3D frames and trusses."
+arch=('i686' 'x86_64')
+url="http://frame3dd.sourceforge.net/"
+license=('GPL3')
+depends=()
+optdepends=('gnuplot: plot results')
+source=()
+#md5sums=('b8718d23b541a8f4a0ea05abdc374056')
+
+_svntrunk="svn://svn.code.sf.net/p/$pkgname/code/trunk"
+_codesrc="frame3dd_code"
+_revision=521
+
+build() {
+
+	svn checkout svn://svn.code.sf.net/p/frame3dd/code/trunk $_codesrc --config-dir ./ -r $_revision
+
+	cd "$srcdir/$_codesrc/src"
+	make
+}
+
+package() {
+	# uncomment the next lines if you want the docs and examples
+	cd "$srcdir/$_codesrc"
+	mkdir -p $pkgdir/usr/share/doc/$pkgname
+	cp -r -t $pkgdir/usr/share/doc/$pkgname doc examples
+
+	cd "$srcdir/$_codesrc/src"
+	mkdir -p $pkgdir/usr/bin
+	cp frame3dd $pkgdir/usr/bin/
+
+}

@@ -1,0 +1,31 @@
+# PKGBUILD for OpenViBE
+# Maintainer: Cristóbal Tapia <crtapia a gmail com>
+
+pkgname=openvibe
+pkgrel=1
+pkgver=0.16.1
+pkgr=48
+pkgdesc="Software for Brain Computer Interfaces and Real Time Neurosciences"
+arch=('x86_64' 'i686')
+url="http://openvibe.inria.fr/"
+license="(L)GPL"
+depends=('subversion' 'doxygen' 'make' 'automake' 'autoconf' 'boost' 'cegui' 'cmake' 'unzip' 'gcc' 'libgtk2.0' 'libglade2' 'libitpp' 'libgsl' 'libexpat' 'libreadline' 'libzzip' 'libtool' 'libxaw' 'libpcre' 'libfreeimage' 'libglu-mesa' 'libalut' 'libvorbis' 'ois' 'ogre' 'vrpn')
+source=(http://openvibe.inria.fr/pub/src/openvibe-0.16.1-svn3780-src.zip)
+md5sums=('SKIP')
+#install='eqc-svn.install'
+
+build() {
+
+  cd $srcdir/code
+
+  ./configure
+
+  make
+}
+
+package() {
+
+  cd $srcdir/code
+
+  make DESTDIR="$pkgdir" install
+}
