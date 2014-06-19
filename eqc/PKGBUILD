@@ -4,7 +4,7 @@
 pkgname=eqc
 pkgrel=2
 pkgver=1.4.11
-pkgr=91
+pkgr=93
 pkgdesc="A preprocessor for LaTeX files that enables numeric and symbolic calculations"
 arch=('x86_64' 'i686')
 url="http://eqc.sourceforge.net/wiki/index.php/Main_Page"
@@ -17,7 +17,7 @@ install='eqc.install'
 
 build() {
 
-  cd $srcdir/code
+  cd "$srcdir"/code
   #cd $srcdir/eqc-1.4.11
 
   ./configure
