@@ -56,6 +56,7 @@ package() {
   #cp -r "${srcdir}/opt" "${srcdir}/usr" "${pkgdir}/"
   [ ! -d "/opt/Adobe AIR" ] &&  ln -s "/opt/adobe-air-sdk/runtimes/air/linux/Adobe AIR/" "${pkgdir}/opt/Adobe AIR"
   [ ! -d "/etc/opt/Adobe/certificates/AIR" ] &&  cp -r "${srcdir}/adobeair/etc" "${pkgdir}/"
+  install -Dm644 "${srcdir}/devolonetsvc.service" "${pkgdir}/usr/lib/systemd/system/devolonetsvc.service"
   install -Dm644 "${srcdir}/eulaAccepted" "${pkgdir}/opt/devolo/dlancockpit/share/eulaAccepted"
   install -Dm755 "${srcdir}/dlancockpit-run.sh" "${pkgdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh"
   install -Dm755 "${srcdir}/dlancockpit-run-service-embedded.sh" "${pkgdir}/opt/devolo/dlancockpit/bin/dlancockpit-run-service-embedded.sh"
